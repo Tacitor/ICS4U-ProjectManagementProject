@@ -5,13 +5,13 @@
  */
 package krampitzkreutzwiserics4u;
 
-import javax.swing.JFrame;
-
 /**
  *
  * @author Tacitor
  */
 public class MainMenu extends javax.swing.JFrame {
+    
+    private MaterialReview materialReviewFrame;
 
     /**
      * Creates new form MainMenu
@@ -50,6 +50,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         materialBtn.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         materialBtn.setText("View Study Material");
+        materialBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                materialBtnActionPerformed(evt);
+            }
+        });
 
         quizBtn.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         quizBtn.setText("Start Quiz");
@@ -89,11 +94,23 @@ public class MainMenu extends javax.swing.JFrame {
         System.exit(0); //close the program with 0 errors/normal conditions
     }//GEN-LAST:event_exitBtnActionPerformed
 
+    private void materialBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBtnActionPerformed
+        // TODO add your handling code here:
+        //check if there is already ref for the material window
+        if (materialReviewFrame == null) {
+            materialReviewFrame = new MaterialReview(this);
+        }
+        //set is visible
+        materialReviewFrame.setVisible(true);
+        //hid this one (main menu)
+        this.setVisible(false);
+    }//GEN-LAST:event_materialBtnActionPerformed
+    
     /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
+        /* Set the Windows 10 look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
