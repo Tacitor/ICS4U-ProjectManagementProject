@@ -29,7 +29,7 @@
                   <Component id="titleLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="backBtn" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="283" max="32767" attributes="0"/>
+              <EmptySpace pref="295" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -48,7 +48,7 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="titleLbl">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Mmmmmh yes the quiz"/>
+        <Property name="text" type="java.lang.String" value="Multiple Choice Quiz"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="backBtn">

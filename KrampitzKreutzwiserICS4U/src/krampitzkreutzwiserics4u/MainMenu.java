@@ -5,21 +5,27 @@
  */
 package krampitzkreutzwiserics4u;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Tacitor
  */
 public class MainMenu extends javax.swing.JFrame {
-    
+
     private final MaterialReview materialReviewFrame = new MaterialReview(this);
     private final QuizUI QuizUI_Frame = new QuizUI(this);
-    
+    private ArrayList<Question> questions;
 
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
+        questions = loadQuestions();
+        System.out.println(questions);
     }
 
     /**
@@ -113,7 +119,7 @@ public class MainMenu extends javax.swing.JFrame {
         this.setVisible(false);
         QuizUI_Frame.setVisible(true);
     }//GEN-LAST:event_quizBtnActionPerformed
-    
+
     /**
      * @param args the command line arguments
      */
@@ -147,6 +153,58 @@ public class MainMenu extends javax.swing.JFrame {
                 new MainMenu().setVisible(true);
             }
         });
+    }
+
+    /**
+     * Load in the questions from the Data file into an array of Question
+     * objects //This is Evan's code - Lukas
+     * @return 
+     */
+    public final ArrayList<Question> loadQuestions() {
+
+        // Declare variables
+        Scanner fileReader;
+        InputStream file = MaterialReview.class.getResourceAsStream("questions.txt");
+        ArrayList<Question> loadedQuestions = new ArrayList();
+        Question newQestion = new Question();
+
+        // Try to read the file
+        try {
+            // Create the scanner to read the file
+            fileReader = new Scanner(file);
+
+            // Read the entire file into a string
+            while (fileReader.hasNextLine()) {
+                newQestion = new Question();
+                //set the quetion
+                newQestion.setQuestion(fileReader.nextLine());
+                //set the four ansers
+                for (int i = 1; i < 5; i++) {
+                    newQestion.setChoice(i, fileReader.nextLine());
+                }
+                //set the correct answer
+                newQestion.setCorrectAnswer(Integer.parseInt(fileReader.nextLine()));
+
+                //a whole question has been loaded, now add it to the arrayList
+                loadedQuestions.add(newQestion);
+            }
+            
+            
+            
+        } catch (Exception e) {
+            // Set the arrayList to not be empty and include the error in it
+            //set the quetion
+            newQestion.setQuestion("ERROR: Failed to load questons data file!");
+            //set the four ansers
+            for (int i = 1; i < 5; i++) {
+                newQestion.setChoice(i, "ERROR: Missing Question");
+            }
+            // Output the jsvs error to the standard output
+            System.out.println("Error reading questions file: " + e);
+        }
+
+        //return the loadted arrayList
+        return loadedQuestions;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

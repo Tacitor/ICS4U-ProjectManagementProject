@@ -20,6 +20,8 @@ public class QuizUI extends javax.swing.JFrame {
     public QuizUI(MainMenu mainMenu) {
         initComponents();
         mainMenuFrame = mainMenu;
+        
+        
     }
 
     /**
@@ -36,7 +38,7 @@ public class QuizUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        titleLbl.setText("Mmmmmh yes the quiz");
+        titleLbl.setText("Multiple Choice Quiz");
 
         backBtn.setText("< Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -54,7 +56,7 @@ public class QuizUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(titleLbl)
                     .addComponent(backBtn))
-                .addContainerGap(283, Short.MAX_VALUE))
+                .addContainerGap(295, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -71,6 +73,7 @@ public class QuizUI extends javax.swing.JFrame {
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
+        //make the main menu visable again
         this.setVisible(false);
         mainMenuFrame.setVisible(true);
     }//GEN-LAST:event_backBtnActionPerformed
