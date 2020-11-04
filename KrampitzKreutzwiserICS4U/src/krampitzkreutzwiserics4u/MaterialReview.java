@@ -128,8 +128,8 @@ public class MaterialReview extends javax.swing.JFrame {
      */
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        mainMenuFrame.setVisible(true);
         this.setVisible(false);
+        mainMenuFrame.setVisible(true);
     }//GEN-LAST:event_backBtnActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables

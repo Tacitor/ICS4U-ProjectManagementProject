@@ -12,6 +12,7 @@ package krampitzkreutzwiserics4u;
 public class MainMenu extends javax.swing.JFrame {
     
     private final MaterialReview materialReviewFrame = new MaterialReview(this);
+    private final QuizUI QuizUI_Frame = new QuizUI(this);
     
 
     /**
@@ -109,7 +110,8 @@ public class MainMenu extends javax.swing.JFrame {
 
     private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
         // TODO add your handling code here:
-        
+        this.setVisible(false);
+        QuizUI_Frame.setVisible(true);
     }//GEN-LAST:event_quizBtnActionPerformed
     
     /**
