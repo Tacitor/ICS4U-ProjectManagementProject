@@ -276,10 +276,9 @@ public class QuizUI extends javax.swing.JFrame {
         //update labels
         updateLabels();
     }//GEN-LAST:event_PreviousBtnActionPerformed
-
-
+    
     /**
-     * Change the GUI's question and answers text to the text of the current question
+     * Update the JLabels on the GUI to refect the latest data
      */
     private void updateLabels() {
         questionNumCurrLbl.setText(Integer.toString(questionNum + 1));
