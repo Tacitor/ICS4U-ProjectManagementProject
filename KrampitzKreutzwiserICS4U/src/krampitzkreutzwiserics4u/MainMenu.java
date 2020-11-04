@@ -15,9 +15,10 @@ import java.util.Scanner;
  */
 public class MainMenu extends javax.swing.JFrame {
 
-    private final MaterialReview materialReviewFrame = new MaterialReview(this);
-    private final QuizUI QuizUI_Frame = new QuizUI(this);
-    private ArrayList<Question> questions;
+    private static ArrayList<Question> questions;
+    private final MaterialReview materialReviewFrame;
+    private final QuizUI QuizUI_Frame;
+    
 
     /**
      * Creates new form MainMenu
@@ -25,7 +26,9 @@ public class MainMenu extends javax.swing.JFrame {
     public MainMenu() {
         initComponents();
         questions = loadQuestions();
-        System.out.println(questions);
+        materialReviewFrame = new MaterialReview(this);
+        QuizUI_Frame = new QuizUI(this);
+        
     }
 
     /**
@@ -154,13 +157,17 @@ public class MainMenu extends javax.swing.JFrame {
             }
         });
     }
+    
+    public static ArrayList<Question> getQuestions() {
+        return questions;
+    }
 
     /**
      * Load in the questions from the Data file into an array of Question
      * objects //This is Evan's code - Lukas
      * @return 
      */
-    public final ArrayList<Question> loadQuestions() {
+    private final ArrayList<Question> loadQuestions() {
 
         // Declare variables
         Scanner fileReader;
