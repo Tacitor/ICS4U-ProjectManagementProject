@@ -79,7 +79,7 @@
             <Property name="editable" type="boolean" value="false"/>
             <Property name="columns" type="int" value="20"/>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Read carfully, you will be tested on this:"/>
+            <Property name="text" type="java.lang.String" value="Read carefully, you will be tested on this:"/>
           </Properties>
         </Component>
       </SubComponents>
