@@ -27,9 +27,15 @@ public class QuizResults extends javax.swing.JFrame {
         mainMenuFrame = m;
     }
 
-    public void loadQuestions(ArrayList<Question> questions) {
+    public void loadQuizData() {
     
+        // Get the question data from the quiz window
+        ArrayList<Question> questions = QuizUI.getQuizQuestions();
+        
+        // Start the html formatting for the output text
         String outputHtml = "<html><div style=\"line-height: 15px; width: 100%;\">\n";
+        
+        // Declare other variables
         int numCorrectAnswers = 0;
         Question questionRef;
           
@@ -56,7 +62,7 @@ public class QuizResults extends javax.swing.JFrame {
             outputHtml += "<br>\n<h2>Question " + (i+1) + "</h2>\n";
             
             // Add the question in large text
-            outputHtml += "<h2>" + questions.get(i).getQuestion() + "</h2>\n";
+            outputHtml += "<h2>" + questionRef.getQuestion() + "</h2>\n";
             
             // Print the answers and highlight correct/incorrect answers
             for (int j = 1; j <= 4; j++) {

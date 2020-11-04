@@ -14,6 +14,7 @@ import java.util.ArrayList;
 public class QuizUI extends javax.swing.JFrame {
     
     private final MainMenu mainMenuFrame;
+    private QuizResults resultsFrame;
     private static ArrayList<Question> quizQuestions;
     private int questionNum = 0; //the current question the user is on
     private int selectedAns = 0;
@@ -28,6 +29,7 @@ public class QuizUI extends javax.swing.JFrame {
         quizQuestions = MainMenu.getQuestions();
         updateLabels();
         
+        resultsFrame = new QuizResults(mainMenuFrame);
     }
 
     /**
@@ -228,6 +230,17 @@ public class QuizUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         updateUserBtnChoice();
         
+        // If this is the last question, and the user is trying to submit their answers
+        if (questionNum == (quizQuestions.size() - 1)) {
+            // Load the new data into the results window
+            resultsFrame.loadQuizData();
+            
+            // Hide this quiz window 
+            this.setVisible(false);
+            // Make the results window visble
+            resultsFrame.setVisible(true);
+        }
+        
         if (questionNum < (quizQuestions.size() - 1)) {
             questionNum++;
             PreviousBtn.setEnabled(true);
@@ -263,6 +276,9 @@ public class QuizUI extends javax.swing.JFrame {
         updateLabels();
     }//GEN-LAST:event_PreviousBtnActionPerformed
 
+    /**
+     * Change the GUI's question and answers text to the text of the current question
+     */
     private void updateLabels() {
         questionNumCurrLbl.setText(Integer.toString(questionNum + 1));
         questionNumTotalLbl.setText(Integer.toString(quizQuestions.size()));
@@ -289,7 +305,11 @@ public class QuizUI extends javax.swing.JFrame {
         quizQuestions.get(questionNum).setUserAnswer(selectedAns);
     }
     
-    private ArrayList<Question> getQuizQuestions() {
+    /**
+     * Get the quiz data as an ArrayList of Question objects
+     * @return An ArrayList of quiz data
+     */
+    public static ArrayList<Question> getQuizQuestions() {
         return quizQuestions;
     }
 
