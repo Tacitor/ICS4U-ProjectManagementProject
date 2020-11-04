@@ -13,7 +13,7 @@ import java.util.ArrayList; // Dynamically sized question array
  */
 public class QuizResults extends javax.swing.JFrame {
 
-    private MainMenu mainMenuFrame;
+    private final MainMenu mainMenuFrame;
     
     /**
      * Create a new quiz results windows (QuizResults)
@@ -29,7 +29,7 @@ public class QuizResults extends javax.swing.JFrame {
 
     public void loadQuestions(ArrayList<Question> questions) {
     
-        String outputHtml = "<html>\n";
+        String outputHtml = "<html><div style=\"line-height: 15px; width: 100%;\">\n";
         int numCorrectAnswers = 0;
         Question questionRef;
           
@@ -45,7 +45,7 @@ public class QuizResults extends javax.swing.JFrame {
         // Display the user's score. Show the number of answers correct
         outputHtml += "<h1>Score: " + numCorrectAnswers + "/" + questions.size() + ", "
                 // and as a percentage
-                + ((numCorrectAnswers*100)/questions.size()) + "</h1><br><br>\n";
+                + ((numCorrectAnswers*100)/questions.size()) + "%</h1>\n";
         
         for (int i = 0; i < questions.size(); i++) {
             
@@ -61,29 +61,41 @@ public class QuizResults extends javax.swing.JFrame {
             // Print the answers and highlight correct/incorrect answers
             for (int j = 1; j <= 4; j++) {
                 
-                outputHtml += "<h5";
+                outputHtml += "<h3";
                 
                 // If this is the correct answer
-                if (questionRef.getCorrectAnswer() == i) {
+                if (questionRef.getCorrectAnswer() == j) {
                     // Insert html styling to highlight the line green
                     outputHtml += " style=\"background-color: #ddffdd\"";
                 }
                 // If this is not the correct answer, but the user picked this answer, 
-                else if (questionRef.getUserAnswer() == i) {
+                else if (questionRef.getUserAnswer() == j) {
                     // Insert html styling to highlight the line red, since the user was wrong
                     outputHtml += " style=\"background-color: #ffe0dd\"";
                 }
                 
-                // Add the answer's text to the output
-                // Add the line with the answer number (1-4) and close off the html tag
-                outputHtml += "> " + (i+1) + ": " + questionRef.getChoice(i) + "</h5>\n";
-                
+                // Add the answer's text and the answer number (1-4) to the output
+                outputHtml += "> " + (j) + ": " + questionRef.getChoice(j);
+
+                // If this is the correct answer
+                if (questionRef.getCorrectAnswer() == j) {
+                    // Insert html styling to highlight the line green
+                    outputHtml += " &#60; Correct answer";
+                }
+                // If this is not the correct answer, but the user picked this answer, 
+                else if (questionRef.getUserAnswer() == j) {
+                    // Insert html styling to highlight the line red, since the user was wrong
+                    outputHtml += " &#60; Your answer";
+                }
+
+                // Close off the html tag
+                outputHtml +=  "</h3>\n";
             }
 
         }
         
         // Close off the string's html
-        outputHtml += "</html>\n";
+        outputHtml += "</div></html>\n";
         
         resultsHtml.setText(outputHtml);
     }
@@ -136,7 +148,7 @@ public class QuizResults extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(quizResultsLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(scrollContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(scrollContainer, javax.swing.GroupLayout.PREFERRED_SIZE, 267, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(backBtn)
                 .addContainerGap())
@@ -159,7 +171,6 @@ public class QuizResults extends javax.swing.JFrame {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel quizResultsLabel;
     private javax.swing.JLabel resultsHtml;
     private javax.swing.JScrollPane scrollContainer;
