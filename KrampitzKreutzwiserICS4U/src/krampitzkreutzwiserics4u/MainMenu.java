@@ -5,19 +5,30 @@
  */
 package krampitzkreutzwiserics4u;
 
+import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.Scanner;
+
 /**
  *
  * @author Tacitor
  */
 public class MainMenu extends javax.swing.JFrame {
+
+    private static ArrayList<Question> questions;
+    private final MaterialReview materialReviewFrame;
+    private final QuizUI QuizUI_Frame;
     
-    private MaterialReview materialReviewFrame;
 
     /**
      * Creates new form MainMenu
      */
     public MainMenu() {
         initComponents();
+        questions = loadQuestions();
+        materialReviewFrame = new MaterialReview(this);
+        QuizUI_Frame = new QuizUI(this);
+        
     }
 
     /**
@@ -58,6 +69,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         quizBtn.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         quizBtn.setText("Start Quiz");
+        quizBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quizBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,17 +111,18 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_exitBtnActionPerformed
 
     private void materialBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBtnActionPerformed
-        // TODO add your handling code here:
-        //check if there is already ref for the material window
-        if (materialReviewFrame == null) {
-            materialReviewFrame = new MaterialReview(this);
-        }
         //set is visible
         materialReviewFrame.setVisible(true);
         //hid this one (main menu)
         this.setVisible(false);
     }//GEN-LAST:event_materialBtnActionPerformed
-    
+
+    private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
+        // Hide this window and show the main menu
+        this.setVisible(false);
+        QuizUI_Frame.setVisible(true);
+    }//GEN-LAST:event_quizBtnActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -139,6 +156,62 @@ public class MainMenu extends javax.swing.JFrame {
                 new MainMenu().setVisible(true);
             }
         });
+    }
+    
+    public static ArrayList<Question> getQuestions() {
+        return questions;
+    }
+
+    /**
+     * Load in the questions from the Data file into an array of Question
+     * objects //This is Evan's code - Lukas
+     * @return 
+     */
+    private final ArrayList<Question> loadQuestions() {
+
+        // Declare variables
+        Scanner fileReader;
+        InputStream file = MaterialReview.class.getResourceAsStream("questions.txt");
+        ArrayList<Question> loadedQuestions = new ArrayList();
+        Question newQestion = new Question();
+
+        // Try to read the file
+        try {
+            // Create the scanner to read the file
+            fileReader = new Scanner(file);
+
+            // Read the entire file into a string
+            while (fileReader.hasNextLine()) {
+                newQestion = new Question();
+                //set the quetion
+                newQestion.setQuestion(fileReader.nextLine());
+                //set the four ansers
+                for (int i = 1; i < 5; i++) {
+                    newQestion.setChoice(i, fileReader.nextLine());
+                }
+                //set the correct answer
+                newQestion.setCorrectAnswer(Integer.parseInt(fileReader.nextLine()));
+
+                //a whole question has been loaded, now add it to the arrayList
+                loadedQuestions.add(newQestion);
+            }
+            
+            
+            
+        } catch (Exception e) {
+            // Set the arrayList to not be empty and include the error in it
+            //set the quetion
+            newQestion.setQuestion("ERROR: Failed to load questons data file!");
+            //set the four ansers
+            for (int i = 1; i < 5; i++) {
+                newQestion.setChoice(i, "ERROR: Missing Question");
+            }
+            // Output the jsvs error to the standard output
+            System.out.println("Error reading questions file: " + e);
+        }
+
+        //return the loadted arrayList
+        return loadedQuestions;
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

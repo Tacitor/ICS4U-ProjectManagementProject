@@ -1,7 +1,7 @@
 /*
  * Lukas Krampitz and Evan Kreutwiser
  * Oct 23, 2020 and November 4, 2020
- * 
+ * Show the material that the user need to study to pass the quiz
  */
 package krampitzkreutzwiserics4u;
 
@@ -15,7 +15,7 @@ import java.util.Scanner; // File reading
  */
 public class MaterialReview extends javax.swing.JFrame {
     
-    private MainMenu mainMenuFrame;
+    private final MainMenu mainMenuFrame;
 
     /**
      * Creates new form MaterialReview
@@ -128,8 +128,8 @@ public class MaterialReview extends javax.swing.JFrame {
      */
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
-        mainMenuFrame.setVisible(true);
         this.setVisible(false);
+        mainMenuFrame.setVisible(true);
     }//GEN-LAST:event_backBtnActionPerformed
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
