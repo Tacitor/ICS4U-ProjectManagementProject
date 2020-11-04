@@ -222,7 +222,6 @@ public class QuizUI extends javax.swing.JFrame {
         //make the main menu visable again
         this.setVisible(false);
         mainMenuFrame.setVisible(true);
-        System.out.println(quizQuestions);
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
