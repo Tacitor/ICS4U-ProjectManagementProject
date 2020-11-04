@@ -227,6 +227,8 @@ public class QuizUI extends javax.swing.JFrame {
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
+        updateUserBtnChoice();
+        
         if (questionNum < (quizQuestions.size() - 1)) {
             questionNum++;
             PreviousBtn.setEnabled(true);
@@ -237,14 +239,14 @@ public class QuizUI extends javax.swing.JFrame {
             nextBtn.setEnabled(false);
         }
         
-        updateUserBtnChoice();
-        
         //update labels
         updateLabels();
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void PreviousBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousBtnActionPerformed
         // TODO add your handling code here:
+        updateUserBtnChoice();
+        
         if (questionNum > 0) {
             questionNum--;
             nextBtn.setEnabled(true);
@@ -256,7 +258,7 @@ public class QuizUI extends javax.swing.JFrame {
             PreviousBtn.setEnabled(false);
         }
         
-        updateUserBtnChoice();
+        
         
         //update labels
         updateLabels();
@@ -285,8 +287,6 @@ public class QuizUI extends javax.swing.JFrame {
         } else {
             selectedAns = 0;
         }
-        System.out.println("user ans: " + selectedAns);
-        System.out.println("question num: " + questionNum);
         quizQuestions.get(questionNum).setUserAnswer(selectedAns);
     }
     
