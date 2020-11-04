@@ -1,7 +1,7 @@
 /*
  * Lukas Krampitz and Evan Kreutwiser
  * Oct 23, 2020 and November 4, 2020
- * 
+ * Show the material that the user need to study to pass the quiz
  */
 package krampitzkreutzwiserics4u;
 
@@ -15,7 +15,7 @@ import java.util.Scanner; // File reading
  */
 public class MaterialReview extends javax.swing.JFrame {
     
-    private MainMenu mainMenuFrame;
+    private final MainMenu mainMenuFrame;
 
     /**
      * Creates new form MaterialReview

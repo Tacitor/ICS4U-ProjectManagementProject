@@ -11,7 +11,8 @@ package krampitzkreutzwiserics4u;
  */
 public class MainMenu extends javax.swing.JFrame {
     
-    private MaterialReview materialReviewFrame;
+    private final MaterialReview materialReviewFrame = new MaterialReview(this);
+    
 
     /**
      * Creates new form MainMenu
@@ -58,6 +59,11 @@ public class MainMenu extends javax.swing.JFrame {
 
         quizBtn.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
         quizBtn.setText("Start Quiz");
+        quizBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quizBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -95,16 +101,16 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_exitBtnActionPerformed
 
     private void materialBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_materialBtnActionPerformed
-        // TODO add your handling code here:
-        //check if there is already ref for the material window
-        if (materialReviewFrame == null) {
-            materialReviewFrame = new MaterialReview(this);
-        }
         //set is visible
         materialReviewFrame.setVisible(true);
         //hid this one (main menu)
         this.setVisible(false);
     }//GEN-LAST:event_materialBtnActionPerformed
+
+    private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_quizBtnActionPerformed
     
     /**
      * @param args the command line arguments
