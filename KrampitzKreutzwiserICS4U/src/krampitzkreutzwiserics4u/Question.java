@@ -19,7 +19,7 @@ public class Question {
     private String question, choice1, choice2, choice3, choice4;
     // Integers representing the correct answer and the user's answer
     // Answer values range from 1 to 4, with 0 representing no answer
-    int correctAnswer, userAnswer;
+    private int correctAnswer, userAnswer;
     
     /**
      * Constructor to create a blank question object
