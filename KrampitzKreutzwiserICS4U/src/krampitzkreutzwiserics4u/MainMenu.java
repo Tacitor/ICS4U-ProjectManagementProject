@@ -118,7 +118,7 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_materialBtnActionPerformed
 
     private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
-        // TODO add your handling code here:
+        // Hide this window and show the main menu
         this.setVisible(false);
         QuizUI_Frame.setVisible(true);
     }//GEN-LAST:event_quizBtnActionPerformed
