@@ -13,10 +13,10 @@ import java.util.ArrayList;
  */
 public class QuizUI extends javax.swing.JFrame {
     
-    private final MainMenu mainMenuFrame;
-    private static ArrayList<Question> quizQuestions;
+    private final MainMenu mainMenuFrame; //ref back to the main menu
+    private static ArrayList<Question> quizQuestions; //the questions
     private int questionNum = 0; //the current question the user is on
-    private int selectedAns = 0;
+    private int selectedAns = 0; //which radio button is selected?
 
     /**
      * Creates new form QuizUI
@@ -24,9 +24,9 @@ public class QuizUI extends javax.swing.JFrame {
      */
     public QuizUI(MainMenu mainMenu) {
         initComponents();
-        mainMenuFrame = mainMenu;
-        quizQuestions = MainMenu.getQuestions();
-        updateLabels();
+        mainMenuFrame = mainMenu; //ref back to main menu
+        quizQuestions = MainMenu.getQuestions(); //get the questions from the Main menu
+        updateLabels(); 
         
     }
 
@@ -226,11 +226,13 @@ public class QuizUI extends javax.swing.JFrame {
 
     private void nextBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextBtnActionPerformed
         // TODO add your handling code here:
-        updateUserBtnChoice();
+        updateUserBtnChoice(); 
         
+        //check if there are more questions or if the user is at the end
         if (questionNum < (quizQuestions.size() - 1)) {
             questionNum++;
             PreviousBtn.setEnabled(true);
+            //change the button text to refect the action preformed
             if (questionNum == (quizQuestions.size() - 1)) {
                 nextBtn.setText("Submit >");
             }
@@ -246,6 +248,7 @@ public class QuizUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         updateUserBtnChoice();
         
+        //check if there are any more previous questions or if the user is already at the first one
         if (questionNum > 0) {
             questionNum--;
             nextBtn.setEnabled(true);
@@ -257,12 +260,13 @@ public class QuizUI extends javax.swing.JFrame {
             PreviousBtn.setEnabled(false);
         }
         
-        
-        
         //update labels
         updateLabels();
     }//GEN-LAST:event_PreviousBtnActionPerformed
-
+    
+    /**
+     * Update the JLabels on the GUI to refect the latest data
+     */
     private void updateLabels() {
         questionNumCurrLbl.setText(Integer.toString(questionNum + 1));
         questionNumTotalLbl.setText(Integer.toString(quizQuestions.size()));
@@ -273,6 +277,9 @@ public class QuizUI extends javax.swing.JFrame {
         Option4RdBtn.setText(quizQuestions.get(questionNum).getChoice(4));
     }
     
+    /**
+     * Get the currently selected radio button
+     */
     private void updateUserBtnChoice() {
         //find which button is selected
         if (Option1RdBtn.isSelected()) {            
@@ -289,6 +296,10 @@ public class QuizUI extends javax.swing.JFrame {
         quizQuestions.get(questionNum).setUserAnswer(selectedAns);
     }
     
+    /**
+     * This is the really important part that allows other windows to get the updates questions now with the user's answers
+     * @return 
+     */
     private ArrayList<Question> getQuizQuestions() {
         return quizQuestions;
     }
