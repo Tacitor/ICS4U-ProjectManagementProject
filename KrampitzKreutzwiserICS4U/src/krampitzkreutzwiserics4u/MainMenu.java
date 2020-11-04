@@ -167,7 +167,7 @@ public class MainMenu extends javax.swing.JFrame {
      * objects //This is Evan's code - Lukas
      * @return 
      */
-    private final ArrayList<Question> loadQuestions() {
+    private ArrayList<Question> loadQuestions() {
 
         // Declare variables
         Scanner fileReader;
