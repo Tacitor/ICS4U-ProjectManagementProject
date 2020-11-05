@@ -92,6 +92,7 @@ public class MaterialReview extends javax.swing.JFrame {
         materialTxtAr.setRows(5);
         materialTxtAr.setText("Read carefully, you will be tested on this:");
         materialTxtAr.setWrapStyleWord(true);
+        materialTxtAr.setAutoscrolls(false);
         jScrollPane1.setViewportView(materialTxtAr);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

@@ -82,6 +82,7 @@
             <Property name="rows" type="int" value="5"/>
             <Property name="text" type="java.lang.String" value="Read carefully, you will be tested on this:"/>
             <Property name="wrapStyleWord" type="boolean" value="true"/>
+            <Property name="autoscrolls" type="boolean" value="false"/>
           </Properties>
         </Component>
       </SubComponents>
