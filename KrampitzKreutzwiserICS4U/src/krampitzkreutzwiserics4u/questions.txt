@@ -1,18 +1,60 @@
-What is an Apple?
-Vegetable
-Fruit
-Flower
-Rock
+What does SDLC stand for?
+Standard Domain Link Customer
+Software Development Life Cycle
+Standard Development Link Cycle
+Software Domain Link Customer
 2
-Evan is very _____
-Mean
-Short
-Cool
-Old
-3
-Testing here
-apple
-banana
-cucumber
-duck
+A System is:
+Hardware
+The User
+Software
+Both A and C
 4
+Who is not involved in the creation of a System?
+Analysts
+Designers
+Developers
+None of the above
+4
+Which of the following is NOT a measure of success?
+Easy to maintain and administer.
+Scalable to meet the needs of the client.
+Not delivered to the client on time and ready to go.
+A successful support system in place for the client.
+3
+The Waterfall Model developed by Dr. Winston Royce is based on his work with which of the following?
+Spacecraft mission planning
+Accounting software
+N-body simulation
+Aerodynamics for planes
+1
+The Waterfall Model says mistakes are easy to fix when?
+At the beginning
+At the end
+In the middle
+After the customer has received the software.
+1
+Which of the following phases lasts the longest for successful software?
+Design 
+Implementation 
+Integration /Test
+Maintenance
+4
+The Gantt Chart was developed by?
+Mail clerk Hudson Gantt
+Machinist Hammond Gantt
+Mechanical engineer Henry Gantt
+Metallurgist Harold Gantt
+3
+The Gantt Chart is MOST useful for?
+Developers
+Project Managers
+Engineers
+Users
+2
+UML, what does it stand for?
+Ubiquitous Modeling Language
+Unified Modeling Language
+United Modeling Language
+Ultrasonic Modern Light
+2
