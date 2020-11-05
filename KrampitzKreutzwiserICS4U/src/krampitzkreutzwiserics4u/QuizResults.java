@@ -1,7 +1,8 @@
 /*
  * Evan Kreutzwiser
  * Nov 4, 2020
- * Displays the results of the user's test
+ * Displays the results of the user's test, showing every question and what the 
+ * correct answer and the user's answer is. The results are marked-up with html.
  */
 package krampitzkreutzwiserics4u;
 
