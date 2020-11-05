@@ -1,3 +1,30 @@
-Read carefully, you will be tested on this:
+The SDLC - The Software Development Life Cycle
 
-[Insert Study Material Here]
+The SDLC is a view of the Software Development Process. The goal of the process is to create a 'System'. 
+A System is a combination of software and hardware that provides a solution for a business problem. There are a few things that this involves. It all starts with the client who provides the request and the funding. It also involves Analysts, Designers, Developers, Testers, and other specialists.
+
+A very important part of the SDLC is the measure of success. A good system should perform all of the following well: 
+
+Does the project actually solve what it was meant to solve? 
+Is it easy to maintain and administer?
+Is it scalable to meet the needs of the client?
+Is there a successful support system in place for the client?
+Was it delivered on time and ready to go?
+Was the client happy with the finished product?
+
+To create high-quality software one must organize, plan, and use various diagrammatic conventions. Part of this can also be to be aware of the Waterfall Model
+
+The Waterfall Model: Developed by Dr. Winston Royce in 1970 based on his experience developing software for spacecraft mission planning. A mistake made in one phase often requires the developer to backup and redo some of the work in the previous phase. This is why it is named after a waterfall. It also means mistakes found early in the SDLC are much less expensive to correct than those found later.
+The Waterfall Model consists of several phases: 
+Problem Statement
+Analysis 
+Design 
+Implementation 
+Integration /Test
+Maintenance
+
+Project Management Tools - Gantt & UML
+
+A very useful tool in the Gantt Chart. It was developed by mechanical engineer Henry Gantt in the 1910’s. This tool is typically used by people working on a large project such as the Hoover Dam, or the Eisenhower National Defense Interstate Highway System. The Chart helps project managers to visualize, schedule, and track scheduled as well as actual progress of projects.
+
+Another useful tool is the UML - Unified Modeling Language. It visually specifies parts of a system. UML is very useful for large porjects as complex software designs are much more easily described through UML than textually. UML can be complicated to learn and therefore is not always required.
