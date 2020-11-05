@@ -87,12 +87,12 @@ public class QuizResults extends javax.swing.JFrame {
                 // If this is the correct answer
                 if (questionRef.getCorrectAnswer() == j) {
                     // Insert html styling to highlight the line green
-                    outputHtml += " &#60; Correct answer";
+                    outputHtml += " &#60;-- Correct answer";
                 }
                 // If this is not the correct answer, but the user picked this answer, 
                 else if (questionRef.getUserAnswer() == j) {
                     // Insert html styling to highlight the line red, since the user was wrong
-                    outputHtml += " &#60; Your answer";
+                    outputHtml += " &#60;-- Your answer";
                 }
 
                 // Close off the html tag
