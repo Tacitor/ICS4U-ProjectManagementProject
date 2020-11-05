@@ -1,20 +1,26 @@
 /*
- * Lukas Krampiz
+ * Lukas Krampiz (And Evan Kreutzwiser)
  * Nov 4, 2020
- * 
+ * The quiz GUI.
+ * Displays questions one at a time, allowing the user to pick their answers and
+ * switch between questions at will. The last question has a submit button that
+ * Loads the question data into a results window to display the user;s results.
  */
 package krampitzkreutzwiserics4u;
 
 import java.util.ArrayList;
+import javax.swing.JRadioButton;
 
 /**
  *
  * @author lukra1175
+ * @author Evan
  */
 public class QuizUI extends javax.swing.JFrame {
     
     private final MainMenu mainMenuFrame; //ref back to the main menu
     private static ArrayList<Question> quizQuestions; //the questions
+    private QuizResults resultsFrame;
     private int questionNum = 0; //the current question the user is on
     private int selectedAns = 0; //which radio button is selected?
 
@@ -24,12 +30,41 @@ public class QuizUI extends javax.swing.JFrame {
      */
     public QuizUI(MainMenu mainMenu) {
         initComponents();
-        mainMenuFrame = mainMenu; //ref back to main menu
-        quizQuestions = MainMenu.getQuestions(); //get the questions from the Main menu
+        mainMenuFrame = mainMenu; // Ref back to main menu
+        quizQuestions = new ArrayList(); // Initialize the array list
+        reloadQuestions(); // Get the questions from the Main menu
         updateLabels(); 
         
+        resultsFrame = new QuizResults(mainMenuFrame);
     }
 
+    /**
+     * Reload the questions to reset the quiz and clear the user's answers
+     */
+    public final void reloadQuestions() {
+        // Get the array of questions
+        ArrayList<Question> arrayToCopy = MainMenu.getQuestions(); //get the questions from the Main menu
+        
+        // Clear this window's questions array
+        quizQuestions.clear();
+        
+        // Make a copy of every element of the array
+        for (int i = 0; i < arrayToCopy.size(); i++) {
+            // Add a copy of the question object to the array
+            quizQuestions.add(arrayToCopy.get(i).clone());
+        }
+        
+        // Change which question is shown back to the first
+        questionNum = 0;
+        updateLabels();
+        loadSelection();
+        
+        // Make sure the next/back buttons are set correctly
+        PreviousBtn.setEnabled(false);
+        nextBtn.setEnabled(true);
+        nextBtn.setText("Next >");
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -228,6 +263,17 @@ public class QuizUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         updateUserBtnChoice(); 
         
+        // If this is the last question, and the user is trying to submit their answers
+        if (questionNum == (quizQuestions.size() - 1)) {
+            // Load the new data into the results window
+            resultsFrame.loadQuizData();
+            
+            // Hide this quiz window 
+            this.setVisible(false);
+            // Make the results window visble
+            resultsFrame.setVisible(true);
+        }
+        
         //check if there are more questions or if the user is at the end
         if (questionNum < (quizQuestions.size() - 1)) {
             questionNum++;
@@ -242,6 +288,9 @@ public class QuizUI extends javax.swing.JFrame {
         
         //update labels
         updateLabels();
+
+        // Load the previous answer if the question was answered before
+        loadSelection();
     }//GEN-LAST:event_nextBtnActionPerformed
 
     private void PreviousBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_PreviousBtnActionPerformed
@@ -262,6 +311,9 @@ public class QuizUI extends javax.swing.JFrame {
         
         //update labels
         updateLabels();
+        
+        // Load the previous answer if the question was answered before
+        loadSelection();
     }//GEN-LAST:event_PreviousBtnActionPerformed
     
     /**
@@ -297,10 +349,43 @@ public class QuizUI extends javax.swing.JFrame {
     }
     
     /**
-     * This is the really important part that allows other windows to get the updates questions now with the user's answers
-     * @return 
+     * Sets which button is selected according to the user's answer to the question.
+     * If no selection has been made yet, select button 1.
      */
-    private ArrayList<Question> getQuizQuestions() {
+    private void loadSelection() {
+        // Store the user's answer for the currently selected question
+        int userSelection = quizQuestions.get(questionNum).getUserAnswer();
+        JRadioButton buttonToSelect;
+        
+        // find which button should be selected
+        switch (userSelection) {
+            case 4: // Answer 4 was selected for this question
+                buttonToSelect = Option4RdBtn;
+                selectedAns = 4;
+                break;
+            case 3: // Answer 3 was selected for this question
+                buttonToSelect = Option3RdBtn;
+                selectedAns = 3;
+                break;
+            case 2: // Answer 2 was selected for this question
+                buttonToSelect = Option2RdBtn;
+                selectedAns = 2;
+                break;
+            default: // Answer 1 or no answer was selected fro this question
+                buttonToSelect = Option1RdBtn;
+                selectedAns = 1;
+                break;
+        }
+        
+        // Select the button cooresponding to the user's choice
+        AnswerOptionBtnGrp.setSelected(buttonToSelect.getModel(), true);
+    }
+    
+    /**
+     * This is the really important part that allows other windows to get the updates questions now with the user's answers
+     * @return An ArrayList of quiz data
+     */
+    public static ArrayList<Question> getQuizQuestions() {
         return quizQuestions;
     }
 

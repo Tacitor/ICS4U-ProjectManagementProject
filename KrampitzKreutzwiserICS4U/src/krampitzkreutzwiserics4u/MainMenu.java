@@ -118,6 +118,8 @@ public class MainMenu extends javax.swing.JFrame {
     }//GEN-LAST:event_materialBtnActionPerformed
 
     private void quizBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quizBtnActionPerformed
+        // Reset the quiz UI's question ArrayList
+        QuizUI_Frame.reloadQuestions();
         // Hide this window and show the main menu
         this.setVisible(false);
         QuizUI_Frame.setVisible(true);
